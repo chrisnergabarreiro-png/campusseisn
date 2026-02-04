@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus de Verano SEI San Narciso 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .rotate-custom { transform: rotate(2deg); }
+        .-rotate-custom { transform: rotate(-3deg); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 scroll-smooth" x-data="{ view: 'home', isMenuOpen: false, plan: 'Semanal', submitted: false }">
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo/Marca -->
+                <div class="flex items-center gap-3 cursor-pointer group" @click="view = 'home'">
+                    <div class="bg-blue-600 p-2 rounded-lg shadow-lg group-hover:scale-110 transition-transform text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-black text-lg tracking-tighter text-blue-950 uppercase leading-none">San Narciso</span>
+                        <span class="text-orange-500 font-black italic text-sm uppercase leading-none">CAMPUS 2026</span>
+                    </div>
+                </div>
+                
+                <!-- Enlaces Escritorio -->
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#inicio" class="text-slate-600 hover:text-blue-600 font-bold transition-colors text-xs uppercase tracking-widest" @click="view = 'home'">Inicio</a>
+                    <a href="#horarios" class="text-slate-600 hover:text-blue-600 font-bold transition-colors text-xs uppercase tracking-widest" @click="view = 'home'">Horarios</a>
+                    <a href="#precios" class="text-slate-600 hover:text-blue-600 font-bold transition-colors text-xs uppercase tracking-widest" @click="view = 'home'">Precios</a>
+                    <button @click="view = 'registration'; window.scrollTo(0,0)" class="bg-orange-500 text-white px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-widest shadow-lg shadow-orange-200 hover:bg-orange-600 transition-all active:scale-95">
+                        Inscribirse
+                    </button>
+                </div>
+
+                <!-- Botón Móvil -->
+                <div class="md:hidden">
+                    <button @click="isMenuOpen = !isMenuOpen" class="p-2 text-blue-900">
+                        <svg x-show="!isMenuOpen" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                        <svg x-show="isMenuOpen" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menú Móvil -->
+        <div x-show="isMenuOpen" x-transition class="md:hidden bg-white border-t border-slate-100 p-6 space-y-4 shadow-2xl">
+            <a href="#inicio" class="block text-lg font-bold text-slate-700" @click="view = 'home'; isMenuOpen = false">Inicio</a>
+            <a href="#horarios" class="block text-lg font-bold text-slate-700" @click="view = 'home'; isMenuOpen = false">Horarios</a>
+            <button @click="view = 'registration'; isMenuOpen = false; window.scrollTo(0,0)" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-black uppercase tracking-widest">
+                Inscribirse Ahora
+            </button>
+        </div>
+    </nav>
+
+    <!-- VISTA INICIO -->
+    <template x-if="view === 'home'">
+        <main>
+            <!-- Hero Section -->
+            <section id="inicio" class="pt-32 pb-20 overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <!-- Logo del SEI San Narciso -->
+                            <div class="mb-8 flex items-center gap-4 bg-white w-fit px-6 py-3 rounded-2xl shadow-sm border border-slate-100">
+                                <div class="w-12 h-12 flex items-center justify-center">
+                                    <img src="https://www.colegioseisannarciso.com/wp-content/uploads/2018/12/logo-sei-san-narciso.png" alt="Logo SEI San Narciso" class="w-full h-auto" onerror="this.src='https://placehold.co/100x100?text=SEI'">
+                                </div>
+                                <div class="h-8 w-[2px] bg-slate-100"></div>
+                                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Institución <br>Educativa SEI</span>
+                            </div>
+
+                            <span class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-blue-100 text-blue-700 font-bold text-xs mb-6 uppercase tracking-widest">
+                                Verano 2026 en Marín
+                            </span>
+                            <h1 class="text-5xl lg:text-7xl font-black text-blue-950 leading-[0.9] mb-6 uppercase">
+                                Crece, Juega y <br><span class="text-orange-500 italic">Aprende</span>
+                            </h1>
+                            <p class="text-xl text-slate-600 mb-8 max-w-lg leading-relaxed font-medium">
+                                El campus definitivo de conciliación familiar en Marín. Actividades deportivas y lúdicas desde las 08:00 hasta las 15:00.
+                            </p>
+                            <div class="flex flex-wrap gap-4">
+                                <button @click="view = 'registration'; window.scrollTo(0,0)" class="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black text-lg shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all hover:scale-105 uppercase tracking-tighter italic">
+                                    Inscribirse ahora
+                                </button>
+                                <a href="#horarios" class="bg-white border-2 border-slate-200 text-slate-700 px-10 py-5 rounded-2xl font-bold text-lg hover:border-blue-600 transition-all">
+                                    Ver Programa
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Imagen de Niños Jugando -->
+                        <div class="relative">
+                            <div class="rounded-[40px] overflow-hidden shadow-2xl border-[12px] border-white rotate-custom">
+                                <div class="aspect-[4/5] bg-blue-100">
+                                    <img src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&q=80&w=1200" alt="Niños jugando en el Campus" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <div class="absolute -bottom-8 -left-8 bg-orange-500 p-8 rounded-3xl shadow-2xl text-white -rotate-custom z-10">
+                                <p class="text-3xl font-black italic tracking-tighter leading-none mb-1 uppercase">08:00 - 15:00</p>
+                                <p class="font-black opacity-80 uppercase tracking-widest text-[10px] text-center">Horario Flexible</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Horarios (Resumen) -->
+            <section id="horarios" class="py-24 bg-blue-950 text-white">
+                <div class="max-w-7xl mx-auto px-4">
+                    <h2 class="text-4xl font-black mb-12 uppercase italic">Cronograma <span class="text-blue-400">Oficial</span></h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                            <span class="text-orange-400 font-bold block mb-2">08:00 - 09:00</span>
+                            <h4 class="font-black uppercase">Plan Madruga / Acogida</h4>
+                        </div>
+                        <div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                            <span class="text-orange-400 font-bold block mb-2">09:00 - 11:30</span>
+                            <h4 class="font-black uppercase">Talleres Lúdicos y Ciencia</h4>
+                        </div>
+                        <div class="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                            <span class="text-orange-400 font-bold block mb-2">11:30 - 13:30</span>
+                            <h4 class="font-black uppercase">Deportes y Multideporte</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tabla de Precios -->
+            <section id="precios" class="py-24 bg-slate-100">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                    <h2 class="text-4xl font-black text-blue-950 mb-16 uppercase italic">Tarifas Campus 2026</h2>
+                    <div class="max-w-4xl mx-auto bg-white rounded-[32px] shadow-xl overflow-hidden">
+                        <table class="w-full text-left">
+                            <thead class="bg-blue-600 text-white text-xs font-black uppercase tracking-widest">
+                                <tr>
+                                    <th class="p-6">Plan</th>
+                                    <th class="p-6">Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 font-bold">
+                                <tr><td class="p-6">Semanal</td><td class="p-6 text-xl">95€</td></tr>
+                                <tr><td class="p-6">Quincenal</td><td class="p-6 text-xl text-blue-600">175€</td></tr>
+                                <tr><td class="p-6">Mensual</td><td class="p-6 text-xl">320€</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="p-8 bg-slate-50 border-t border-slate-100">
+                            <button @click="view = 'registration'; window.scrollTo(0,0)" class="w-full bg-orange-500 text-white py-5 rounded-2xl font-black uppercase italic tracking-tighter">Reservar Plaza Ahora</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </template>
+
+    <!-- VISTA REGISTRO -->
+    <template x-if="view === 'registration'">
+        <main class="pt-32 pb-20 px-4">
+            <div class="max-w-3xl mx-auto">
+                <button @click="view = 'home'" class="flex items-center gap-2 text-blue-600 font-bold mb-8 hover:ml-2 transition-all">
+                    &larr; Volver al Inicio
+                </button>
+
+                <div class="bg-white rounded-[40px] shadow-2xl overflow-hidden border border-slate-100">
+                    <div class="bg-blue-600 p-10 text-white">
+                        <h2 class="text-4xl font-black uppercase">Inscripción 2026</h2>
+                        <p class="text-blue-100">Completa los datos para reservar tu plaza.</p>
+                    </div>
+
+                    <div x-show="submitted" class="p-20 text-center" x-transition>
+                        <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto text-white mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                        </div>
+                        <h3 class="text-3xl font-black uppercase mb-4">¡Registro Enviado!</h3>
+                        <p class="text-slate-500 mb-8 font-medium">Te contactaremos pronto para confirmar los detalles.</p>
+                        <button @click="view = 'home'; submitted = false" class="bg-slate-100 px-8 py-3 rounded-xl font-bold text-slate-600">Volver</button>
+                    </div>
+
+                    <form x-show="!submitted" @submit.prevent="submitted = true" class="p-10 space-y-8">
+                        <!-- Planes -->
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-black text-blue-900 uppercase">1. Elige tu Plan</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <template x-for="p in ['Semanal', 'Quincenal', 'Mensual']">
+                                    <label :class="plan === p ? 'border-orange-500 bg-orange-50 ring-2 ring-orange-200' : 'border-slate-100'" 
+                                           class="cursor-pointer border-2 p-6 rounded-2xl text-center transition-all">
+                                        <input type="radio" name="plan" :value="p" x-model="plan" class="hidden">
+                                        <span class="block font-black uppercase" x-text="p"></span>
+                                        <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest" x-text="p === 'Semanal' ? 'Desde 95€' : p === 'Quincenal' ? 'Desde 175€' : 'Desde 320€'"></span>
+                                    </label>
+                                </template>
+                            </div>
+                        </div>
+
+                        <!-- Datos -->
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-black text-blue-900 uppercase">2. Información del Alumno/a</h4>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="text" required placeholder="Nombre del Alumno" class="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 font-bold outline-none focus:border-blue-500 transition-all">
+                                <input type="text" required placeholder="Curso actual" class="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 font-bold outline-none focus:border-blue-500 transition-all">
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-black text-blue-900 uppercase">3. Contacto del Tutor</h4>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="text" required placeholder="Nombre Tutor" class="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 font-bold outline-none focus:border-blue-500 transition-all">
+                                <input type="email" required placeholder="Email de contacto" class="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 font-bold outline-none focus:border-blue-500 transition-all">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-blue-600 text-white py-6 rounded-2xl font-black text-xl uppercase italic shadow-xl shadow-blue-100 hover:bg-blue-700 active:scale-95 transition-all">
+                            Confirmar Reserva
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </template>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-500 py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-8">
+                <div class="bg-blue-600 p-1.5 rounded-lg text-white"><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M2 12h2"/><path d="M20 12h2"/></svg></div>
+                <span class="font-black text-white uppercase tracking-tighter">San Narciso Campus</span>
+            </div>
+            <p class="text-xs font-black uppercase tracking-[0.4em] opacity-40 italic">CHRISTIAN NERGA BARREIRO - 2º TSEAS - 2026</p>
+        </div>
+    </footer>
+
+</body>
+</html>
